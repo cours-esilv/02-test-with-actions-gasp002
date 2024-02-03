@@ -1,9 +1,6 @@
 name: CI
 
-on:
-  push:
-    branches:
-      - ci
+on: [push, pull_request]
 
 jobs:
   build:
@@ -19,7 +16,7 @@ jobs:
           node-version: 14
 
       - name: Run markdown lint
-        run: |
+      - run: |
          npm install remark-cli remark-preset-lint-consistent
          npx remark . --use remark-preset-lint-consistent --frail
 
